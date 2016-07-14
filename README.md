@@ -1,2 +1,2 @@
-# OWASP-Ruhrpott.github.io
-The github.io page
+# owasp-ruhrpott.github.io
+The https://owasp-ruhrpott.github.io/ page.
