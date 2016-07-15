@@ -1,0 +1,43 @@
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.jumbotron { 
+  background: url('/img/ZecheZollverein_Pixel_by_avda-foto.de.png'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+html{
+	overflow-y: hidden;
+}
+
+.media {
+  color: white;
+  position: fixed;
+  bottom: 5px;
+}
+
+.payload {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: rgba(255,255,255,0.5);
+  color: #ed1b2f;
+}
+
+a{
+  color: white;
+}
+
+.black-bg{
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 20px;
+}
