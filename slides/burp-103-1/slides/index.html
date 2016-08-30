@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Burp Workshop Slides</title>
+
+		<link rel="stylesheet" href="/burp-103/slides/css/reveal.css">
+		<link rel="stylesheet" href="/burp-103/slides/css/theme/white.css">
+		<link rel="stylesheet" href="/burp-103/slides/css/custom/index.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="/burp-103/slides/lib/css/zenburn.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="/burp-103/slides/img/jumbotron_bg.png" class="text-white">
+					<h1>BURP WORKSHOP</h1>
+					<h4>Burp Development Introduction</h4>
+					<p>Speaker: <a class="text-white"href="https://github.com/TimGuenther">Tim Guenther</a></p>
+				</section>
+				<!-- Introduction -->
+				<section>
+					<h1><a href="/burp-103/demo_app/">DEMO APP</a></h1>
+				</section>
+				<section>
+					<h2>GOAL</h2>
+					<p>Create an extension to automate the base64 encoding.</p>
+					<h4>OR</h4>
+					<p>Create your own extension and ask for help.</p>
+				</section>
+				<!-- Burp Basics -->
+				<section>
+					<h2>BURP PROJECT</h2>
+					<img class="img-responsive" src="/burp-103/slides/img/slides/burp_setup.png" alt="burp setup">
+				</section>
+				<section>
+					<h2>burp/BurpExtender.java</h2>
+					<a href="https://portswigger.net/burp/extender/api/burp/IBurpExtender.html"><i>void registerExtenderCallbacks(IBurpExtenderCallback)</i></a>
+					<ul>
+						<li><a href="https://portswigger.net/burp/extender/api/burp/IBurpExtenderCallbacks.html"><b>CALLBACKS:</b></a> inter process communication between burp and extension</li>
+						<li><a href="https://portswigger.net/burp/extender/api/burp/IExtensionHelpers.html"><b>EXTENSION HELPERS:</b></a> useful classes for conversion of different burp api objects</li>
+						<li>Register other listeners for burp via the callback</li>
+					</ul>
+				</section>
+				<section>
+					<h2>burp/owasp/ModifyHTTPRequest.java</h2>
+					<a href="https://portswigger.net/burp/extender/api/burp/IHttpListener.html"><i>void processHttpMessage(toolFlag, isRequest, HttpRequestResponse)</i></a>
+					<ul>
+						<li><a href="https://portswigger.net/burp/extender/api/burp/IBurpExtenderCallbacks.html"><b>ToolFlag:</b></a> an integer defining the origin or target tool, e.g. Proxy, Scanner or Intruder</li>
+						<li><a href="https://portswigger.net/burp/extender/api/burp/IHttpListener.html"><b>isRequest:</b></a> determines whether the HTTP message is a request or response</li>
+						<li><a href="https://portswigger.net/burp/extender/api/burp/IHttpRequestResponse.html"><b>httpRequestResponse:</b></a> all info about the HTTP message is stored in this object. For responses, related request is stored inside too.</li>
+						<li>All messages from all tools will proxy through this function</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Clone The <a href="https://github.com/OWASP-Ruhrpott/owasp-workshop-burp-dev">repository</a> and start.</h2>
+				</section>
+				<!-- End -->
+				<section>
+					<h2>Thank you for your attention</h2>
+					<p>This presentation was created with <a href="https://github.com/hakimel/reveal.js">reveal.js</a></p>
+					<p>Resources on the next slide.</p>
+				</section>
+				<section>
+					<h2>RESOURCES</h2>
+					<ul>
+						<li>Demo Projects: <a href="https://portswigger.net/burp/extender/">https://portswigger.net/burp/extender/</a></li>
+						<li>Burp JavaDoc: <a href="https://portswigger.net/burp/extender/api/index.html">https://portswigger.net/burp/extender/api/index.html</a></li>
+						<li>My Burp Template: <a href="https://github.com/TimGuenther/burp-base">https://github.com/TimGuenther/burp-base</a></li>
+					</ul>
+					<h3>Requirements: <i>(tested setup)</i></h3>
+					<ul class="pull-left">
+						<li>Netbeans 8.1</li>
+						<li>Burp Suite Pro 1.7.03</li>
+						<li>Java OpenJDK 1.7</li>
+						<li>Maven 2.2.1</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="/burp-103/slides/lib/js/head.min.js"></script>
+		<script src="/burp-103/slides/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '/burp-103/slides/plugin/markdown/marked.js' },
+					{ src: '/burp-103/slides/plugin/markdown/markdown.js' },
+					{ src: '/burp-103/slides/plugin/notes/notes.js', async: true },
+					{ src: '/burp-103/slides/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
